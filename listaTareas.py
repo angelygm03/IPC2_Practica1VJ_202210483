@@ -7,7 +7,7 @@ class ListaTareas:
         self.id_actual = 1
 
     def agregar_tarea(self, nombre, descripcion):
-        nueva_tarea = Tarea(self.id_actual, nombre, descripcion, "pendiente")
+        nueva_tarea = Tarea(self.id_actual, nombre, descripcion, "Pendiente")
         nuevo_nodo = Nodo(nueva_tarea)
         if not self.header:
             self.header = nuevo_nodo

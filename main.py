@@ -6,6 +6,7 @@ def main():
         print("------------------------------------------------------------")
         print("                 Mi Administrador de Tareas                 ")
         print("------------------------------------------------------------")
+        mostrar_tareas_menu(lista_tareas)
         print("1. Agregar tarea")
         print("2. Marcar tarea \"en progreso\" ")
         print("3. Terminar una tarea")
@@ -33,6 +34,18 @@ def main():
         else:
             print("Opción inválida. Inténtalo de nuevo")
 
+def mostrar_tareas_menu(lista_tareas):
+    if lista_tareas.header is None:
+        print("                ¡No hay tareas registradas!")
+        print("------------------------------------------------------------")
+    else:
+        actual = lista_tareas.header
+        while actual:
+            tarea = actual.tarea
+            print(f"\n ID: {tarea.id} \n Nombre: {tarea.nombre} \n Descripción: {tarea.descripcion} \n Estado: {tarea.estado}")
+            print("------------------------------------------------------------")
+            actual = actual.siguiente
+
 def agregar_tarea(lista_tareas):
     print("------------------------------------------------------------")
     print("                        Nueva Tarea                         ")
@@ -40,6 +53,7 @@ def agregar_tarea(lista_tareas):
     nombre = input("Ingrese el nombre de la tarea: ")
     descripcion = input("Ingrese la descripción de la tarea: ")
     lista_tareas.agregar_tarea(nombre, descripcion)
+    print("¡Tarea creada con éxito")
 
 def tarea_enProgreso():
     pass
