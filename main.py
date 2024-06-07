@@ -20,7 +20,7 @@ def main():
         if respuesta == "1":
             agregar_tarea(lista_tareas)
         elif respuesta == "2":
-            tarea_enProgreso()
+            tarea_enProgreso(lista_tareas)
         elif respuesta == "3":
             terminar_tarea()
         elif respuesta == "4":
@@ -53,10 +53,18 @@ def agregar_tarea(lista_tareas):
     nombre = input("Ingrese el nombre de la tarea: ")
     descripcion = input("Ingrese la descripción de la tarea: ")
     lista_tareas.agregar_tarea(nombre, descripcion)
-    print("¡Tarea creada con éxito")
+    print()
+    print("¡Tarea creada con éxito!")
 
-def tarea_enProgreso():
-    pass
+def tarea_enProgreso(lista_tareas):
+    if lista_tareas.header is None:
+        print("¡No hay tareas registradas!")
+    else:
+        id_tarea = int(input("Ingrese el ID de la tarea: "))
+        if lista_tareas.marcar_en_progreso(id_tarea):
+            print(f"La tarea con ID {id_tarea} ha sido marcada como 'En Progreso'.")
+        else:
+            print(f"No se encontró una tarea con el ID {id_tarea}.")
 
 def terminar_tarea():
     pass

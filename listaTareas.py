@@ -18,3 +18,12 @@ class ListaTareas:
             actual.siguiente = nuevo_nodo
         self.id_actual += 1
         print(f"La tarea '{nombre}' fue agregada con el ID {self.id_actual - 1} a la lista")  #verificar que se agrega a la lista
+
+    def marcar_en_progreso(self, id_tarea):
+        actual = self.header
+        while actual:
+            if actual.tarea.id == id_tarea:
+                actual.tarea.estado = "En Progreso"
+                return True
+            actual = actual.siguiente
+        return False
