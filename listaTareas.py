@@ -27,3 +27,17 @@ class ListaTareas:
                 return True
             actual = actual.siguiente
         return False
+    
+    def eliminar_tarea(self, id_tarea):
+        actual = self.header
+        anterior = None
+        while actual:
+            if actual.tarea.id == id_tarea:
+                if anterior:
+                    anterior.siguiente = actual.siguiente
+                else:
+                    self.header = actual.siguiente
+                return True
+            anterior = actual
+            actual = actual.siguiente
+        return False

@@ -22,7 +22,7 @@ def main():
         elif respuesta == "2":
             tarea_enProgreso(lista_tareas)
         elif respuesta == "3":
-            terminar_tarea()
+            terminar_tarea(lista_tareas)
         elif respuesta == "4":
             ver_tareas()
         elif respuesta == "5":
@@ -62,12 +62,25 @@ def tarea_enProgreso(lista_tareas):
     else:
         id_tarea = int(input("Ingrese el ID de la tarea: "))
         if lista_tareas.marcar_en_progreso(id_tarea):
-            print(f"La tarea con ID {id_tarea} ha sido marcada como 'En Progreso'.")
+            print(f"La tarea {id_tarea} ha sido marcada como 'En Progreso'.")
         else:
             print(f"No se encontró una tarea con el ID {id_tarea}.")
 
-def terminar_tarea():
-    pass
+def terminar_tarea(lista_tareas):
+    if lista_tareas.header is None:
+        print("¡No hay tareas registradas!")
+    else:
+        print("------------------------------------------------------------")
+        print("                      Eliminar Tarea                        ")
+        print("------------------------------------------------------------")
+        id_tarea = int(input("Ingrese el ID de la tarea: "))
+        print()
+        if lista_tareas.eliminar_tarea(id_tarea):
+            print(f"La tarea {id_tarea} ha sido eliminada.")
+            print()
+        else:
+            print(f"No se encontró una tarea con el ID {id_tarea}.")
+            print()
 
 def ver_tareas():
     pass
