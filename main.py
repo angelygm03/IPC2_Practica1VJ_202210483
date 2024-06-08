@@ -1,3 +1,5 @@
+import os
+import graphviz
 from listaTareas import ListaTareas
 
 def main():
@@ -24,7 +26,7 @@ def main():
         elif respuesta == "3":
             terminar_tarea(lista_tareas)
         elif respuesta == "4":
-            ver_tareas()
+            ver_tareas(lista_tareas)
         elif respuesta == "5":
             ver_informacion()
         elif respuesta == "6":
@@ -82,8 +84,10 @@ def terminar_tarea(lista_tareas):
             print(f"No se encontró una tarea con el ID {id_tarea}.")
             print()
 
-def ver_tareas():
-    pass
+def ver_tareas(lista_tareas):
+    lista_tareas.generar_grafico()
+    print("Generando imagen...")
+    os.system("lista_tareas.png")
 
 def ver_informacion():
     pass

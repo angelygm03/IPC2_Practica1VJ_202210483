@@ -1,5 +1,6 @@
 from tarea import Tarea
 from nodo import Nodo
+import graphviz
 
 class ListaTareas:
     def __init__(self):
@@ -41,3 +42,16 @@ class ListaTareas:
             anterior = actual
             actual = actual.siguiente
         return False
+    
+    def generar_grafico(self):
+        dot = graphviz.Digraph(comment='Lista de Tareas', format='png')
+        dot.attr(rankdir='LR')  # orientación horizontal
+        actual = self.header
+        while actual:
+            tarea = actual.tarea
+            label = f"ID: {tarea.id}\nNombre: {tarea.nombre}\nDescripción: {tarea.descripcion}\nEstado: {tarea.estado}"
+            dot.node(str(tarea.id), label, shape='box')
+            if actual.siguiente:
+                dot.edge(str(tarea.id), str(actual.siguiente.tarea.id))
+            actual = actual.siguiente
+        dot.render('lista_tareas', cleanup=True)
