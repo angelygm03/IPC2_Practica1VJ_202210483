@@ -90,7 +90,15 @@ def ver_tareas(lista_tareas):
     os.system("lista_tareas.png")
 
 def ver_informacion():
-    pass
+    print("------------------------------------------------------------")
+    print("                Información del Desarrollador               ")
+    print("------------------------------------------------------------")
+    print(" Curso: Introducción a la Programación y Computación 2")
+    print(" Nombre: Angely Lucrecia García Martínez")
+    print(" Carnet: 202210483")
+    print(" Correo: gmartinez.angely@gmail.com")
+    print("------------------------------------------------------------")
+    print()
 
 if __name__ == "__main__":
     main()
